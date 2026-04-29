@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speaking stems</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="site-title">Speaking stems</h1>
+    <div class="topic-bar">
+      <p class="topic-text" id="topicText" aria-live="polite"></p>
+    </div>
+    <button type="button" class="spin-btn spin-btn--header" id="topicSpin" title="New topic">Spin</button>
+  </header>
+
+  <main class="board">
+    <div class="tier-labels">
+      <div class="tier tier--junior">Junior</div>
+      <div class="tier tier--senior">Senior</div>
+    </div>
+
+    <div class="grid" id="stemGrid"></div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
