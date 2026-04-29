@@ -3,66 +3,120 @@
 
   const STEM_COUNT = 8;
 
-  const TOPICS = [
-    "Convince me of a movie I must see.",
-    "Convince me why kids should pick their own bedtime.",
-    "Convince me why pizza is better than burgers.",
-    "Convince me why cats are evil.",
-    "Convince me of the dangers of AI.",
-    "Convince me homework does more harm than good.",
-    "Convince me schools should start later in the morning.",
-    "Convince me social media should be banned for under-16s.",
-    "Convince me books beat screens every time.",
-    "Convince me recess should last an hour.",
-    "Convince me why humans should colonise Mars.",
-    "Convince me electric cars are overrated.",
-    "Convince me junk food belongs in school cafeterias.",
-    "Convince me uniforms help learning.",
-    "Convince me uniforms crush individuality.",
-    "Convince me exams measure nothing useful.",
-    "Convince me sport matters more than maths.",
-    "Convince me maths matters more than sport.",
-    "Convince me privacy is dead—good riddance.",
-    "Convince me everyone deserves a four-day week.",
-    "Convince me zoos do more good than harm.",
-    "Convince me zoos should shut down tomorrow.",
-    "Convince me democracy is overrated.",
-    "Convince me voting should be compulsory.",
-    "Convince me billionaires should not exist.",
-    "Convince me climate activism has gone too far.",
-    "Convince me climate activism has not gone far enough.",
-    "Convince me grades should be abolished.",
-    "Convince me robots will steal every job.",
-    "Convince me remote learning beats classrooms.",
-    "Convince me handwriting still matters.",
-    "Convince me summer holidays are too long.",
-    "Convince me winter beats summer.",
-    "Convince me fame is a curse.",
-    "Convince me luck beats talent.",
-    "Convince me talent beats luck.",
-    "Convince me censorship protects society.",
-    "Convince me censorship poisons society.",
-    "Convince me lying is sometimes moral.",
-    "Convince me revenge can be justice.",
-    "Convince me empathy is a weakness.",
-    "Convince me empathy is our greatest strength.",
-    "Convince me nostalgia blinds us.",
-    "Convince me optimism is naive.",
-    "Convince me pessimism is lazy.",
-    "Convince me originality is a myth.",
-    "Convince me failure teaches more than success.",
-    "Convince me ambition ruins happiness.",
-    "Convince me boredom sparks creativity.",
-    "Convince me silence speaks louder than words.",
-    "Convince me curiosity kills more than cats.",
-    "Convince me rules exist to be broken.",
-    "Convince me tradition anchors wisdom.",
-    "Convince me tradition traps progress.",
-    "Convince me honesty costs too much.",
-    "Convince me kindness can backfire.",
-    "Convince me courage means asking for help.",
-    "Convince me listening beats debating.",
+  /** Simple dice graphic — randomise / new pick (replaces “Spin” label) */
+  const SPIN_ICON = `<svg class="spin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm7 4.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM8 12a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm8 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm-4 4.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></svg>`;
+
+  const TOPICS_REGULAR = [
+    "Convince me that homework should be banned.",
+    "Convince me that school uniforms make students less creative.",
+    "Convince me that social media does more harm than good.",
+    "Convince me that zoos should not exist.",
+    "Convince me that robots will take all our jobs.",
+    "Convince me that fast food should be taxed like cigarettes.",
+    "Convince me that we spend too much money on space exploration.",
+    "Convince me that sport should be compulsory for everyone.",
+    "Convince me that screens are making us lonelier.",
+    "Convince me that fame is not worth the price.",
+    "Convince me that animals have the same rights as humans.",
+    "Convince me that money can buy happiness.",
+    "Convince me that the school day should start at 10am.",
+    "Convince me that we are too dependent on our phones.",
+    "Convince me that celebrities have too much influence on young people.",
+    "Convince me that the weekend should be three days long.",
+    "Convince me that AI will be the best teacher you ever had.",
+    "Convince me that junk food advertising should be banned entirely.",
+    "Convince me that voting should be compulsory for teenagers.",
+    "Convince me that we are living in the most important decade in human history.",
+    "Convince me that online school is better than the real thing.",
+    "Convince me that competitive sport destroys more than it builds.",
+    "Convince me that reading fiction is more valuable than reading news.",
+    "Convince me that the most dangerous invention ever made was the smartphone.",
+    "Convince me that failure is a better teacher than success.",
+    "Convince me that we have already passed the point of no return on climate change.",
+    "Convince me that being bored is good for you.",
+    "Convince me that cities are making humans less human.",
+    "Convince me that kindness is a more powerful force than intelligence.",
+    "Convince me that your generation will fix what mine broke.",
+    "Convince me that privacy is already dead.",
+    "Convince me that every student should learn a second language.",
+    "Convince me that superheroes are the myths of our time.",
+    "Convince me that sleeping in is not laziness — it's biology.",
+    "Convince me that we value the wrong kinds of intelligence.",
+    "Convince me that the most powerful weapon is a good story.",
+    "Convince me that beauty standards are a public health issue.",
+    "Convince me that single-use plastic should carry criminal penalties.",
+    "Convince me that silence is becoming an endangered resource.",
+    "Convince me that the news makes the world seem worse than it is.",
+    "Convince me that empathy can be taught.",
+    "Convince me that the best ideas always come from outsiders.",
+    "Convince me that we are more tribal now than we were a thousand years ago.",
+    "Convince me that convenience is the enemy of meaning.",
+    "Convince me that humour is a form of intelligence.",
+    "Convince me that the most important skill of the 21st century is knowing when to stop.",
+    "Convince me that every generation thinks it invented rebellion.",
+    "Convince me that what we eat says everything about who we are.",
+    "Convince me that doing nothing is sometimes the bravest choice.",
+    "Convince me that the world needs more people who ask questions than people who have answers.",
   ];
+
+  const TOPICS_FUN = [
+    "Convince me clowns aren't scary.",
+    "Convince me pineapple belongs on pizza.",
+    "Convince me cats are secretly plotting against us.",
+    "Convince me Mondays should be illegal.",
+    "Convince me dogs are better than people.",
+    "Convince me cereal is just cold soup.",
+    "Convince me pigeons are government drones.",
+    "Convince me sandwiches taste better when someone else makes them.",
+    "Convince me we are all living in a simulation.",
+    "Convince me that the floor is actually lava.",
+    "Convince me ghosts are just misunderstood.",
+    "Convince me that socks with sandals is a valid fashion choice.",
+    "Convince me broccoli is just tiny trees and we should respect that.",
+    "Convince me that naps should be scheduled into the school day.",
+    "Convince me that crows are the most intelligent beings on earth.",
+    "Convince me that whoever invented alarm clocks had no friends.",
+    "Convince me that the best meal of the day is breakfast food at midnight.",
+    "Convince me that dogs know exactly what they're doing when they tilt their heads.",
+    "Convince me that the shopping trolley with the wobbly wheel finds you on purpose.",
+    "Convince me that spiders are more scared of you than you are of them.",
+    "Convince me that penguins are just overdressed for every occasion.",
+    "Convince me that Mondays would be better if we just skipped straight to Wednesday.",
+    "Convince me that the person who invented homework was a villain.",
+    "Convince me that capybaras are the world's most emotionally intelligent animal.",
+    "Convince me that hot chips are a love language.",
+    "Convince me that the last biscuit in the packet should have protected species status.",
+    "Convince me that we've been eating corn on the cob wrong this whole time.",
+    "Convince me that every group project has the same five people in it.",
+    "Convince me that whoever sits nearest the printer becomes the office IT department.",
+    "Convince me that seagulls have no respect and deserve none in return.",
+    "Convince me that bubble wrap was invented purely for stress relief.",
+    "Convince me that the best part of any movie is the trailer.",
+    "Convince me that escalators are just lazy stairs with an attitude.",
+    "Convince me that cats invented the internet.",
+    "Convince me that the person who named the eggplant had never seen an egg.",
+    "Convince me that nobody actually knows how to parallel park.",
+    "Convince me that whoever designed IKEA instructions hates humanity.",
+    "Convince me that the five-second rule is a legitimate food safety guideline.",
+    "Convince me that glitter is a form of punishment that never ends.",
+    "Convince me that every haunted house is just a house that needs better lighting.",
+    "Convince me that autocorrect is actively trying to ruin your life.",
+    "Convince me that the best ideas happen in the shower because that's the only place without a screen.",
+    "Convince me that whoever decided raisins should look like chocolate chips is a menace.",
+    "Convince me that a dog's zoomies are a form of spiritual awakening.",
+    "Convince me that \"reply all\" should require a licence.",
+    "Convince me that the office microwave has witnessed things it cannot unsee.",
+    "Convince me that raccoons are just cats who discovered crime.",
+    "Convince me that whoever put the milk crate challenge on the internet owed everyone an apology.",
+    "Convince me that the last person to finish eating at a table should receive a formal apology from everyone else.",
+    "Convince me that somewhere, a golden retriever is convinced it is saving your life every single day.",
+  ];
+
+  let topicMode = "regular";
+
+  function getActiveTopics() {
+    return topicMode === "fun" ? TOPICS_FUN : TOPICS_REGULAR;
+  }
 
   const CATEGORIES = [
     {
@@ -431,8 +485,18 @@
   function spinTopic() {
     const el = document.getElementById("topicText");
     if (!el) return;
-    const [choice] = pickRandom(TOPICS, 1);
+    const [choice] = pickRandom(getActiveTopics(), 1);
     el.textContent = choice;
+    el.title = choice;
+  }
+
+  function setTopicMode(mode) {
+    topicMode = mode === "fun" ? "fun" : "regular";
+    const regularBtn = document.getElementById("topicModeRegular");
+    const funBtn = document.getElementById("topicModeFun");
+    if (regularBtn) regularBtn.classList.toggle("is-active", topicMode === "regular");
+    if (funBtn) funBtn.classList.toggle("is-active", topicMode === "fun");
+    spinTopic();
   }
 
   function spinCategory(categoryId) {
@@ -459,7 +523,7 @@
       <article class="card card--${cat.id}" data-category="${cat.id}">
         <div class="card__head">
           <span class="card__title">${escapeHtml(cat.title)}</span>
-          <button type="button" class="spin-btn" data-spin="${cat.id}" title="New stems for this box">Spin</button>
+          <button type="button" class="spin-btn" data-spin="${cat.id}" title="New stems for this box" aria-label="New stems for this box">${SPIN_ICON}</button>
         </div>
         <div class="card__body">
           <ul class="card__list" data-stem-list="${cat.id}"></ul>
@@ -481,8 +545,16 @@
 
   const topicSpin = document.getElementById("topicSpin");
   if (topicSpin) {
+    topicSpin.innerHTML = SPIN_ICON;
     topicSpin.addEventListener("click", spinTopic);
   }
+
+  document.getElementById("topicModeRegular")?.addEventListener("click", () => {
+    setTopicMode("regular");
+  });
+  document.getElementById("topicModeFun")?.addEventListener("click", () => {
+    setTopicMode("fun");
+  });
 
   buildGrid();
   spinTopic();

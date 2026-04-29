@@ -79,22 +79,71 @@ body {
   grid-column: 2;
   justify-self: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: clamp(0.35rem, 1vw, 0.65rem);
+  flex-wrap: nowrap;
+  gap: clamp(0.25rem, 0.8vh, 0.5rem);
   max-width: min(52vw, 38rem);
   min-width: 0;
   text-align: center;
 }
 
+.topic-mode {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  flex-shrink: 0;
+}
+
+.topic-mode__btn {
+  font: inherit;
+  font-weight: 700;
+  font-size: calc(clamp(0.65rem, min(1.45vmin, 2vh), 0.95rem) + var(--font-bump));
+  padding: 0.3em 0.85em;
+  margin: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.topic-mode__btn + .topic-mode__btn {
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.topic-mode__btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.topic-mode__btn.is-active {
+  background: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+
+.topic-mode__btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  z-index: 1;
+}
+
 .topic-text {
   margin: 0;
+  width: 100%;
+  max-width: 100%;
   font-weight: 600;
   font-size: calc(clamp(0.88rem, min(2.25vmin, 3.2vh), 1.6rem) + var(--font-bump));
   text-align: center;
   line-height: 1.2;
   min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .spin-btn--header {
@@ -106,7 +155,7 @@ body {
   font: inherit;
   font-weight: 700;
   font-size: calc(clamp(0.78rem, min(1.85vmin, 2.4vh), 1.12rem) + var(--font-bump));
-  padding: 0.35em 0.75em;
+  padding: 0.35em 0.65em;
   border: 2px solid rgba(255, 255, 255, 0.55);
   border-radius: 6px;
   background: var(--spin-bg);
@@ -114,6 +163,21 @@ body {
   cursor: pointer;
   flex-shrink: 0;
   transition: background 0.15s ease, transform 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.spin-icon {
+  width: 1.2em;
+  height: 1.2em;
+  display: block;
+}
+
+.spin-btn--header .spin-icon {
+  width: 1.35em;
+  height: 1.35em;
 }
 
 .spin-btn:hover {

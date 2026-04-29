@@ -10,9 +10,15 @@
   <header class="site-header">
     <h1 class="site-title">Speaking stems</h1>
     <div class="topic-bar">
+      <div class="topic-mode" role="group" aria-label="Topic type">
+        <button type="button" class="topic-mode__btn is-active" id="topicModeRegular" data-mode="regular">
+          Regular
+        </button>
+        <button type="button" class="topic-mode__btn" id="topicModeFun" data-mode="fun">Fun</button>
+      </div>
       <p class="topic-text" id="topicText" aria-live="polite"></p>
     </div>
-    <button type="button" class="spin-btn spin-btn--header" id="topicSpin" title="New topic">Spin</button>
+    <button type="button" class="spin-btn spin-btn--header" id="topicSpin" title="New topic" aria-label="New topic"></button>
   </header>
 
   <main class="board">
