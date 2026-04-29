@@ -80,11 +80,11 @@ body {
 .topic-bar {
   flex: 1 1 auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
-  gap: clamp(0.25rem, 0.8vh, 0.5rem);
+  gap: clamp(0.45rem, 1.2vw, 1rem);
   min-width: min-content;
   text-align: center;
 }
@@ -139,6 +139,8 @@ body {
   text-align: center;
   line-height: 1.2;
   white-space: nowrap;
+  flex: 0 1 auto;
+  min-width: min-content;
 }
 
 .spin-btn--header {

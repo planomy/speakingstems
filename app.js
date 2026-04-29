@@ -545,7 +545,6 @@
 
   const topicSpin = document.getElementById("topicSpin");
   if (topicSpin) {
-    topicSpin.innerHTML = SPIN_ICON;
     topicSpin.addEventListener("click", spinTopic);
   }
 

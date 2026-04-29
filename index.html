@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Speaking stems</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <header class="site-header">
@@ -18,7 +18,11 @@
       </div>
       <p class="topic-text" id="topicText" aria-live="polite"></p>
     </div>
-    <button type="button" class="spin-btn spin-btn--header" id="topicSpin" title="New topic" aria-label="New topic"></button>
+    <button type="button" class="spin-btn spin-btn--header" id="topicSpin" title="New topic" aria-label="New topic">
+      <svg class="spin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm7 4.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM8 12a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm8 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm-4 4.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" />
+      </svg>
+    </button>
   </header>
 
   <main class="board">
@@ -30,6 +34,6 @@
     <div class="grid" id="stemGrid"></div>
   </main>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
